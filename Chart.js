@@ -311,7 +311,8 @@ window.Chart = function(context){
 			animation : true,
 			animationSteps : 60,
 			animationEasing : "easeOutQuart",
-			onAnimationComplete : null
+			onAnimationComplete : null,
+			showLegend: false
 		};		
 		var config = (options) ? mergeChartConfig(chart.Line.defaults,options) : chart.Line.defaults;
 		
@@ -812,6 +813,8 @@ window.Chart = function(context){
 			populateLabels(labelTemplateString, calculatedScale.labels,calculatedScale.steps,config.scaleStartValue,config.scaleStepWidth);
 		}
 		
+		
+		
 		scaleHop = Math.floor(scaleHeight/calculatedScale.steps);
 		calculateXAxisSize();
 		animationLoop(config,drawScale,drawLines,ctx);		
@@ -870,6 +873,17 @@ window.Chart = function(context){
 						}
 					}
 				}
+				// Show legend code here
+				if (config.showLegend) {
+					var gap = i * 75,
+						space = 5,
+						x = 100,
+						y = 5
+						sqrSize = 10;
+					ctx.rect(x + gap + space, y-sqrSize/2, sqrSize, sqrSize);
+					ctx.fill();
+					ctx.fillText(data.datasets[i].title, x + gap, y);
+				}
 			}
 			
 			function yPos(dataSet,iteration){
@@ -887,7 +901,6 @@ window.Chart = function(context){
 			ctx.moveTo(width-widestXLabel/2+5,xAxisPosY);
 			ctx.lineTo(width-(widestXLabel/2)-xAxisLength-5,xAxisPosY);
 			ctx.stroke();
-			
 			
 			if (rotateLabels > 0){
 				ctx.save();
@@ -935,6 +948,7 @@ window.Chart = function(context){
 			
 			ctx.textAlign = "right";
 			ctx.textBaseline = "middle";
+			
 			for (var j=0; j<calculatedScale.steps; j++){
 				ctx.beginPath();
 				ctx.moveTo(yAxisPosX-3,xAxisPosY - ((j+1) * scaleHop));
@@ -1034,8 +1048,7 @@ window.Chart = function(context){
 			};
 			
 	
-		}
-
+		}	
 		
 	}
 	
