@@ -347,13 +347,9 @@ window.Chart = function(context){
 			onAnimationComplete : null,
 			showLabelsOnBars : false,
 			barLabelFontSize:10,
-			barLabelFontColor:"#6D6D6D"
-		};	
-
-=======
+			barLabelFontColor:"#6D6D6D",
 			align:'v'
 		};		
->>>>>>> 460d367... #73 Horizontal bar chart
 		var config = (options) ? mergeChartConfig(chart.Bar.defaults,options) : chart.Bar.defaults;
 		var alignment = config.align;
 		if(alignment == "h"){
