@@ -376,7 +376,7 @@ window.Chart = function(context){
 		//Check and set the scale
 		if (!config.scaleOverride){
 
-			calculatedScale = calculateScale(scaleHeight,valueBounds.maxSteps,valueBounds.minSteps,valueBounds.maxValue,valueBounds.minValue,labelTemplateString);
+			calculatedScale = calculateScale(scaleHeight,valueBounds.maxSteps,valueBounds.minSteps,valueBounds.maxValue,valueBounds.minValue,labelTemplateString,config);
 		}
 		else {
 			calculatedScale = {
@@ -512,7 +512,7 @@ window.Chart = function(context){
 		//Check and set the scale
 		if (!config.scaleOverride){
 
-			calculatedScale = calculateScale(scaleHeight,valueBounds.maxSteps,valueBounds.minSteps,valueBounds.maxValue,valueBounds.minValue,labelTemplateString);
+			calculatedScale = calculateScale(scaleHeight,valueBounds.maxSteps,valueBounds.minSteps,valueBounds.maxValue,valueBounds.minValue,labelTemplateString,config);
 		}
 		else {
 			calculatedScale = {
@@ -805,7 +805,7 @@ window.Chart = function(context){
 		labelTemplateString = (config.scaleShowLabels)? config.scaleLabel : "";
 		if (!config.scaleOverride){
 
-			calculatedScale = calculateScale(scaleHeight,valueBounds.maxSteps,valueBounds.minSteps,valueBounds.maxValue,valueBounds.minValue,labelTemplateString);
+			calculatedScale = calculateScale(scaleHeight,valueBounds.maxSteps,valueBounds.minSteps,valueBounds.maxValue,valueBounds.minValue,labelTemplateString,config);
 		}
 		else {
 			calculatedScale = {
@@ -1061,7 +1061,7 @@ window.Chart = function(context){
 		calculateDrawingSizes();
 		valueBounds = getValueBounds();
 		labelTemplateString = (config.scaleShowLabels)? config.scaleLabel : "";
-		calculatedScale = calculateScale(scaleHeight,valueBounds.maxSteps,valueBounds.minSteps,valueBounds.maxValue,valueBounds.minValue,labelTemplateString);
+		calculatedScale = calculateScale(scaleHeight,valueBounds.maxSteps,valueBounds.minSteps,valueBounds.maxValue,valueBounds.minValue,labelTemplateString,config);
 		scaleHop = Math.floor(scaleHeight/calculatedScale.steps);
 		calculateYAxisSize();
 		animationLoop(config,drawScale,drawBars,ctx);
